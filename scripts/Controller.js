@@ -17,3 +17,14 @@ class Controller {
 		photographerView.render(photographer);
 	}
 }
+
+/*
+
+TODO : 
+- créer un générateur de bouton avec ou sans dropdown,
+- un container d'images
+- une modale qui possède la référence à la liste d'images présentes sur la page
+	- affiche une image en fonction du current index dans la liste d'images
+- boucler le formulaire de contact
+
+*/

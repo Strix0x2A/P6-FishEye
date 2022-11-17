@@ -22,7 +22,7 @@ class PhotographerView {
 	
 	getPhotographerTextMetaHTML(detail) {
 		return `
-			<div class="photographer-detail">
+			<div class="pg-detail">
 				<h2 class="pg-name pg-name-bigger">${detail.name}</h2>
 				<p class="pg-location pg-location-bigger">${detail.city}, ${detail.country}</p>
 				<p class="pg-tagline pg-tagline-bigger">${detail.tagline}</p>
