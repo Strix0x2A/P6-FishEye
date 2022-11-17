@@ -10,16 +10,29 @@ class Model {
 			})
 			.then((response) => {
 				this.data = response;
-				console.log(response);
 			});
 	}
 
-	getMedia() {
-		return this.data.media;
+	getPhotographerMedia(photographerId) {
+		let mediaList = [];
+		this.data.media.map((e) => {
+			if (e.photographerId === photographerId) {
+				mediaList.push(e);
+			}
+		})
+		return mediaList;
+	}
+
+	getPhotographerDetail(photographerId) {
+		let detail = this.data.photographers.find(photographer => photographer.id === photographerId);
+		return detail;
 	}
 
 	getPhotographer(photographerId) {
-		return this.data.photographers;
+		let photographer = {};
+		photographer.detail = this.getPhotographerDetail(photographerId);
+		photographer.media = this.getPhotographerMedia(photographerId);
+		return photographer;
 	}
 
 	getPhotographers() {

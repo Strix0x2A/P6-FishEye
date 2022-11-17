@@ -4,8 +4,16 @@
 
 .photograph-header {
     background-color: #FAFAFA;
-    height: 300px;
+    height: 200px;
     margin: 0 100px;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.photographer-detail {
+    display: inline;
 }
 
 .contact_button {
@@ -21,6 +29,7 @@
     cursor: pointer;
 }
 
+/* #region modal */
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -74,3 +83,5 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+/* #endregion */

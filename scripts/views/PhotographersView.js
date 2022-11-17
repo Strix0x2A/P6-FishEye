@@ -7,29 +7,26 @@ class PhotographersView {
 			html += this.getDetailPhotographerHTML(photographer);
 		});
 		photographersSection.innerHTML = html;
+
+		const main = document.querySelector("main");
+
+
+		main.appendChild()
 	};
 
 	getDetailPhotographerHTML(photographer) {
-		let html = `
-			<div>
-				<h2>${photographer.name}</h2>
+		const picture = `assets/photographers/Photographers ID Photos/${photographer.portrait}`;
+
+		return `
+			<div class="pg">
+				<a href="photographer.html?photographerId=${photographer.id}">
+					<img class="pg-img" src="${picture}" alt="${photographer.name}" />
+					<h2 class="pg-name">${photographer.name}</h2>
+				</a>
+				<p class="pg-location">${photographer.city}, ${photographer.country}</p>
+				<p class="pg-tagline">${photographer.tagline}</p>
+				<p class="pg-price">${photographer.price}€/jour</p>
 			</div>
 		`;
-		return html;
 	}
 }
-
-// class Photographer {
-// 	constructor(photographer) {
-// 		const {name} = photographer;
-// 		this.name = name;
-// 	}
-// 	render() {
-// 		let html = `
-// 			<div>
-// 				<h2>${this.name}</h2>
-// 			</div>
-// 		`
-// 		return html;
-// 	}
-// }
