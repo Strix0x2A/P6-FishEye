@@ -1,30 +1,31 @@
+/* global Model, PhotographersView, PhotographerView */
 class Controller {
-	async displayIndex() {
-		let model = new Model;
+	static async displayIndex() {
+		const model = new Model();
 		await model.init();
-		let photographers = model.getPhotographers();
-		let photographersView = new PhotographersView;
-		photographersView.render(photographers);
-	};
+		const photographers = model.getPhotographers();
+		PhotographersView.render(photographers);
+	}
 
-	async displayPhotographer() {
-		let searchParams = new URLSearchParams(window.location.search);
-		let photographerId = parseInt(searchParams.get("photographerId"));
-		let model = new Model;
+	static async displayPhotographer() {
+		const searchParams = new URLSearchParams(window.location.search);
+		const photographerId = parseInt(searchParams.get("photographerId"), 10);
+		const model = new Model();
 		await model.init();
-		let photographer = model.getPhotographer(photographerId);
-		let photographerView = new PhotographerView;
-		photographerView.render(photographer);
+		const photographer = model.getPhotographer(photographerId);
+		const photographerView = new PhotographerView(photographer);
+		photographerView.render();
 	}
 }
+/* exported Controller */
 
 /*
 
-TODO : 
+TODO :
 - créer un générateur de bouton avec ou sans dropdown,
-- un container d'images
 - une modale qui possède la référence à la liste d'images présentes sur la page
 	- affiche une image en fonction du current index dans la liste d'images
 - boucler le formulaire de contact
+- class Lightbox
 
 */

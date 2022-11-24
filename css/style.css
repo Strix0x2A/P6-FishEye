@@ -32,7 +32,7 @@ p {
 	margin-left: 100px;
 }
 
-.photographer_section {
+.photographer-section {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	gap: 70px;

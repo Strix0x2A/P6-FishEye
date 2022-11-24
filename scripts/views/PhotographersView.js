@@ -1,20 +1,15 @@
 class PhotographersView {
-	render(photographers) {
-		const photographersSection = document.querySelector(".photographer_section");
+	static render(photographers) {
+		const photographersSection = document.querySelector(".photographer-section");
 		let html = "";
 
 		photographers.forEach((photographer) => {
-			html += this.getDetailPhotographerHTML(photographer);
+			html += PhotographersView.getDetailPhotographerHTML(photographer);
 		});
 		photographersSection.innerHTML = html;
+	}
 
-		const main = document.querySelector("main");
-
-
-		main.appendChild()
-	};
-
-	getDetailPhotographerHTML(photographer) {
+	static getDetailPhotographerHTML(photographer) {
 		const picture = `assets/photographers/Photographers ID Photos/${photographer.portrait}`;
 
 		return `
