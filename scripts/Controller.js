@@ -17,7 +17,6 @@ class Controller {
 		photographerView.render();
 	}
 }
-/* exported Controller */
 
 /*
 
