@@ -1,5 +1,10 @@
+/* eslint-disable-next-line no-unused-vars */
 class ContactForm {
-	static init() {
+	constructor() {
+		this.modal = document.querySelector("#contact-modal");
+	}
+
+	init() {
 		const openContactForm = document.querySelector(".contact-button");
 		openContactForm.addEventListener("click", () => this.displayModal());
 
@@ -7,13 +12,11 @@ class ContactForm {
 		closeContactForm.addEventListener("click", () => this.closeModal());
 	}
 
-	static displayModal() {
-		const modal = document.querySelector("#contact-modal");
-		modal.style.display = "block";
+	displayModal() {
+		this.modal.style.display = "block";
 	}
 
-	static closeModal() {
-		const modal = document.querySelector("#contact-modal");
-		modal.style.display = "none";
+	closeModal() {
+		this.modal.style.display = "none";
 	}
 }

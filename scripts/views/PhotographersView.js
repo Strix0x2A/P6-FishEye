@@ -1,15 +1,17 @@
+/* eslint-disable-next-line no-unused-vars */
 class PhotographersView {
-	static render(photographers) {
+	render(photographers) {
 		const photographersSection = document.querySelector(".photographer-section");
 		let html = "";
 
 		photographers.forEach((photographer) => {
-			html += PhotographersView.getDetailPhotographerHTML(photographer);
+			html += this.getDetailPhotographerHTML(photographer);
 		});
 		photographersSection.innerHTML = html;
 	}
 
-	static getDetailPhotographerHTML(photographer) {
+	/* eslint-disable-next-line class-methods-use-this */
+	getDetailPhotographerHTML(photographer) {
 		const picture = `assets/photographers/Photographers ID Photos/${photographer.portrait}`;
 
 		return `

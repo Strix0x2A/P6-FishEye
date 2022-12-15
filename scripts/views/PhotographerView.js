@@ -1,10 +1,11 @@
 /* global ContactForm */
+/* eslint-disable-next-line no-unused-vars */
 class PhotographerView {
 	constructor(photographer) {
 		this.photographer = photographer;
 		this.detail = photographer.detail;
 		this.media = photographer.media;
-		this.sort = "likes";
+		this.sort = "title";
 	}
 
 	render() {
@@ -29,7 +30,8 @@ class PhotographerView {
 		media += this.getPhotographerMedia();
 
 		photographMedia.innerHTML = media;
-		ContactForm.init();
+		const contactForm = new ContactForm();
+		contactForm.init();
 	}
 
 	sortMedia(media) {
