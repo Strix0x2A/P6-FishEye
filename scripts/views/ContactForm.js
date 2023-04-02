@@ -1,22 +1,21 @@
-/* eslint-disable-next-line no-unused-vars */
 class ContactForm {
-	constructor() {
-		this.modal = document.querySelector("#contact-modal");
-	}
+  constructor() {
+    this.modal = document.querySelector("#contact-modal");
+  }
 
-	init() {
-		const openContactForm = document.querySelector(".contact-button");
-		openContactForm.addEventListener("click", () => this.displayModal());
+  init() {
+    const openContactForm = document.querySelector(".contact-button");
+    openContactForm.addEventListener("click", () => this.displayModal());
 
-		const closeContactForm = document.querySelector(".close-modal-btn");
-		closeContactForm.addEventListener("click", () => this.closeModal());
-	}
+    const closeContactForm = document.querySelector(".close-modal-btn");
+    closeContactForm.addEventListener("click", () => this.closeModal());
+  }
 
-	displayModal() {
-		this.modal.style.display = "block";
-	}
+  displayModal() {
+    this.modal.style.display = "flex";
+  }
 
-	closeModal() {
-		this.modal.style.display = "none";
-	}
+  closeModal() {
+    this.modal.style.display = "none";
+  }
 }

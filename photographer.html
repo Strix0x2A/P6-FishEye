@@ -2,11 +2,15 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Fisheye - photographe</title>
   </head>
+
   <body>
     <header>
       <a href="index.html">
@@ -14,32 +18,45 @@
       </a>
     </header>
     <main id="main">
-      <div class="photograph-header">
-      </div>
-      <div class="photograph-media">
-      </div>
+      <div class="photograph-header"></div>
+      <div class="photograph-media"></div>
     </main>
     <div id="contact-modal">
-			<div class="modal">
-				<header>
+      <div class="modal">
+        <header>
           <h2>Contactez-moi</h2>
-          <img class="close-modal-btn" src="assets/icons/close.svg" />
+          <img class="close-modal-btn" src="assets/icons/close-white.svg" />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
+        <form>
+          <div>
+            <label>Prénom</label>
+            <input />
+          </div>
           <button class="contact-button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+        </form>
+      </div>
+    </div>
+    <div id="media-lightbox">
+      <img class="close-lightbox-btn" src="assets/icons/close-dark-red.svg" />
+      <div class="lightbox-content">
+        <img
+          class="icon previous-medium-btn"
+          src="assets/icons/close-dark-red.svg"
+        />
+        <div class="lightbox-media"></div>
+        <img
+          class="icon next-medium-btn"
+          src="assets/icons/close-dark-red.svg"
+        />
+      </div>
+    </div>
     <script src="scripts/Model.js"></script>
     <script src="scripts/views/ContactForm.js"></script>
     <script src="scripts/views/PhotographerView.js"></script>
+    <script src="scripts/views/Lightbox.js"></script>
     <script src="scripts/Controller.js"></script>
     <script>
-      let controller = new Controller;
+      let controller = new Controller();
       controller.displayPhotographer();
     </script>
   </body>
