@@ -1,91 +1,100 @@
 @import url("photographer.css");
 
 body {
-	font-family: "DM Sans", sans-serif;
-	margin: 0;
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
 }
 
 
 header {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	height: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
 }
 
 h1 {
-	color: #901C1C;
-	margin-right: 100px;
+  color: #901C1C;
+  margin-right: 100px;
 }
 
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 p {
-	margin: 0px;
+  margin: 0px;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  margin: 0px;
+  padding: 0px;
 }
 
 .logo {
-	height: 50px;
-	margin-left: 100px;
+  height: 50px;
+  margin-left: 100px;
 }
 
 .photographer-section {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	gap: 70px;
-	margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin-top: 100px;
 }
 
 .pg, .pg a {
-	justify-self: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .pg-name {
-	color: #D3573C;
-	font-size: 36px;
-	margin-bottom: 0px;
+  color: #D3573C;
+  font-size: 36px;
+  margin-bottom: 0px;
 }
 
 .pg-name-bigger {
-    font-size: 64px;
+  font-size: 64px;
 }
 
 .pg-location {
-	color: #901C1C;
-	font-size: 13px;
-	margin-bottom: 3px;
+  color: #901C1C;
+  font-size: 13px;
+  margin-bottom: 3px;
 }
 
 .pg-location-bigger {
-	font-size: 24px;
-	margin-bottom: 18px;
+  font-size: 24px;
+  margin-bottom: 18px;
 }
 
 .pg-tagline {
-	font-size: 10px;
-	margin-bottom: 3px;
+  font-size: 10px;
+  margin-bottom: 3px;
 }
 
 .pg-tagline-bigger {
-	font-size: 18px;
-	color: #525252;
+  font-size: 18px;
+  color: #525252;
 }
 
 .pg-price {
-	color: #757575;
-	font-size: 9px;
+  color: #757575;
+  font-size: 9px;
 }
 
 .pg-img {
-	height: 200px;
-	width: 200px;
-	border-radius: 50%;
-	object-fit: cover;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  object-fit: cover;
 }

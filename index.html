@@ -2,27 +2,34 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <script
+      src="https://kit.fontawesome.com/aa86b4daab.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
     <title>Fisheye</title>
   </head>
   <body>
     <header>
       <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" />
+        <img src="assets/images/logo.png" alt="fisheye-logo" class="logo" />
       </a>
       <h1>Nos photographes</h1>
     </header>
     <main id="main">
-        <div class="photographer-section"></div>
+      <div class="photographer-section"></div>
     </main>
-    <script type="application/json" src="data/photographers.json" ></script>
+    <script type="application/json" src="data/photographers.json"></script>
     <script src="scripts/Model.js"></script>
     <script src="scripts/views/PhotographersView.js"></script>
     <script src="scripts/Controller.js"></script>
     <script>
-      let controller = new Controller;
+      let controller = new Controller();
       controller.displayIndex();
     </script>
   </body>

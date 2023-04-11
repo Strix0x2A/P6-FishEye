@@ -1,9 +1,16 @@
 /* global ContactForm */
 class PhotographerView {
+  sortOptions = [
+    { value: "likes", label: "Popularité" },
+    { value: "date", label: "Date" },
+    { value: "title", label: "Titre" },
+  ];
+
   constructor(photographer) {
     this.photographer = photographer;
     this.detail = photographer.detail;
     this.media = photographer.media;
+
     this.sort = "likes";
   }
 
@@ -12,7 +19,7 @@ class PhotographerView {
     let header = "";
 
     header += this.getPhotographerTextMetaHTML();
-    header += '<button class="contact-button">Contactez-moi</button>';
+    header += `<button class="contact-button">Contactez-moi</button>`;
     header += this.getPhotographerPicture();
 
     photographHeader.innerHTML = header;
@@ -22,21 +29,94 @@ class PhotographerView {
 
     media += `
       <div class="sorter">
-        Trier par
-        <input type="button" value="${this.sort}"/>
+        <label for="sort">Trier par</label>
+        <div>
+          <button class="sort-button" id="sort" aria-label="Trier par">
+            ${this.sortOptions.find((e) => this.sort === e.value).label}
+            <img
+              src="assets/icons/chevron-down-sharp-svgrepo-com.svg"
+              alt="toggle-down-icon"
+              class="sort-icon"
+            />
+          </button>
+          <ul class="sort-list">
+            ${this.options.join(
+              `<span class="outer-divider"><span class="inner-divider"></span></span>`
+            )}
+          </ul>
+        </div>
       </div>
     `;
+
     const { mediaHTML, mediaList, mediaPath } = this.getPhotographerMedia();
 
     media += mediaHTML;
 
     photographMedia.innerHTML = media;
 
+    /* #region sort */
+    this.sorter = document.querySelector(".sort-list");
+    this.sortButton = document.querySelector(".sort-button");
+    this.sortButton.addEventListener("click", () => {
+      this.displaySorter();
+    });
+
+    this.sortButtonsList = document.querySelectorAll(".sort-buttons");
+    this.sortButtonsList.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        this.sort = this.sortOptions.find(
+          (opt) => opt.label === e.target.textContent
+        ).value;
+        this.closeSorter();
+        const index = this.sortOptions.findIndex(
+          (opt) => opt.value === this.sort
+        );
+        const element = this.sortOptions.splice(index, 1);
+        this.sortOptions.sort((a, b) => a.label.localeCompare(b.label));
+        this.sortOptions.unshift(element[0]);
+        this.render();
+      });
+    });
+
+    this.sortSelect = document.querySelector("#sort");
+    this.sortSelect.addEventListener("change", (e) => {
+      this.sort = e.target.value;
+      this.render();
+    });
+    /* #endregion */
+
     const lightbox = new Lightbox();
     lightbox.init(mediaList, mediaPath);
 
     const contactForm = new ContactForm();
-    contactForm.init();
+    contactForm.init(this.detail.id, this.detail.name);
+  }
+
+  get options() {
+    return this.sortOptions.map(
+      (option) => `
+        <li><button class="sort-buttons">${option.label}${
+        option.value === this.sort
+          ? `<img
+              src="assets/icons/chevron-down-sharp-svgrepo-com.svg"
+              alt="toggle-down-icon"
+              class="sort-icon"
+            />`
+          : ""
+      }</button></li>
+      `
+    );
+  }
+
+  displaySorter() {
+    this.sorter.style.display = "flex";
+    this.sortButton.style.display = "none";
+  }
+
+  closeSorter() {
+    this.sorter.style.display = "none";
+    this.sortButton.style.display = "flex";
   }
 
   sortMedia(media) {
@@ -76,7 +156,7 @@ class PhotographerView {
         : `<video controls><source src="${mediaPath}${medium.video}" type="video/mp4"></video>`;
       return `${acc}
         <div class="medium">
-          <div>
+          <div class="md">
             ${md}
           </div>
           <div class="medium-detail">
@@ -85,14 +165,9 @@ class PhotographerView {
             </div>
             <div class="medium-likes">
               ${medium.likes}
-              <svg
-                fill="#901C1C"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/>
-              </svg>
+              <button class="like-button" aria-label="like">
+                <img src="assets/icons/heart.svg" alt="heart-icon" />
+              </button>
             </div>
           </div>
         </div>
