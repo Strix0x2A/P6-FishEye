@@ -1,3 +1,7 @@
+main {
+  margin-bottom: 64px;
+}
+
 #contact-modal {
   display: none;
 }
@@ -103,15 +107,19 @@ select option {
   color: white;
 }
 
+.media-list-wrapper {
+  display: flex;
+  margin: 0 auto;
+}
+
 .media-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  column-gap: 95px;
+  row-gap: 32px;
   margin: 0px;
-}
-
-.medium {
-  margin-bottom: 30px;
 }
 
 .medium img, .medium video {
@@ -167,6 +175,40 @@ select option {
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+
+/* #endregion */
+
+/* #region photographer stats */
+.photograph-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+  font-size: 18px;
+  width: 376px;
+  padding: 24px 32px 52px 32px;
+  border-radius: 5px;
+  position: fixed;
+  z-index: 10;
+  bottom: -80px;
+  right: 2%;
+  font-weight: 500;
+  font-size: 24px;
+  background-color: #DB8876;
+}
+
+.total-likes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.total-likes img {
+  width: 18px;
+  height: 18px;
+  color: black;
 }
 
 /* #endregion */

@@ -86,11 +86,43 @@ class PhotographerView {
     });
     /* #endregion */
 
+    /* #region likes */
+    const likeButtons = document.querySelectorAll(".medium-likes>img");
+    likeButtons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        const id = e.target.getAttribute("data-index");
+        const medium = mediaList[parseInt(id)];
+        if (medium.isLiked === undefined) {
+          medium.likes++;
+          medium.isLiked = true;
+          this.render();
+        }
+      });
+    });
+    /* #endregion */
+
+    /* #region lightbox */
     const lightbox = new Lightbox();
     lightbox.init(mediaList, mediaPath);
+    /* #endregion */
 
+    /* #region contact */
     const contactForm = new ContactForm();
     contactForm.init(this.detail.id, this.detail.name);
+    /* #endregion */
+
+    /* #region stats */
+    let stats = document.querySelector(".photograph-stats");
+    stats.innerHTML = `
+      <div class="total-likes">
+        ${this.media.reduce((acc, cur) => acc + cur.likes, 0)}
+        <img src="assets/icons/heart.svg" alt="total-likes" class="total-likes" />
+      </div>
+      <div>
+        ${this.detail.price}€ / jour
+      </div>
+    `;
   }
 
   get options() {
@@ -150,7 +182,7 @@ class PhotographerView {
     const sortedMedia = this.sortMedia(this.media);
     const mediaPath = `assets/photographers/${this.detail.name}/`;
 
-    let mediaList = sortedMedia.reduce((acc, medium) => {
+    let mediaList = sortedMedia.reduce((acc, medium, index) => {
       const md = medium.image
         ? `<img src="${mediaPath}${medium.image}" alt="${medium.title}" />`
         : `<video controls><source src="${mediaPath}${medium.video}" type="video/mp4"></video>`;
@@ -165,17 +197,12 @@ class PhotographerView {
             </div>
             <div class="medium-likes">
               ${medium.likes}
-              <button class="like-button" aria-label="like">
-                <img src="assets/icons/heart.svg" alt="heart-icon" />
-              </button>
+              <img src="assets/icons/heart.svg" alt="heart-icon" data-index="${index}" />
             </div>
           </div>
         </div>
       `;
     }, "");
-    for (let i = 0; i < 4 - (sortedMedia.length % 4); i++) {
-      mediaList += `<div class="pseudo-medium"></div>`;
-    }
     return {
       mediaHTML: `<div class="media-list">${mediaList}</div>`,
       mediaList: sortedMedia,

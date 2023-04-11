@@ -14,11 +14,13 @@ class Lightbox {
     this.mediaList = mediaList;
     this.mediaPath = mediaPath;
 
-    let displayMedia = [
-      ...document.querySelectorAll(".medium-title"),
-      ...document.querySelectorAll(".md"),
-    ];
-    displayMedia.forEach((medium, i) =>
+    const mediaTitles = document.querySelectorAll(".medium-title");
+    mediaTitles.forEach((medium, i) =>
+      medium.addEventListener("click", () => this.displayLightbox(i))
+    );
+
+    const mediaMedium = document.querySelectorAll(".md");
+    mediaMedium.forEach((medium, i) =>
       medium.addEventListener("click", () => this.displayLightbox(i))
     );
 
