@@ -1,4 +1,5 @@
 /* global Model, PhotographersView, PhotographerView, Controller */
+// eslint-disable-next-line no-unused-vars
 class Controller {
   constructor() {
     this.model = new Model();

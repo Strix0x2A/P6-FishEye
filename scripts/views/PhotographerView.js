@@ -1,16 +1,14 @@
-/* global ContactForm */
+// eslint-disable-next-line no-unused-vars
 class PhotographerView {
-  sortOptions = [
-    { value: "likes", label: "Popularité" },
-    { value: "date", label: "Date" },
-    { value: "title", label: "Titre" },
-  ];
-
   constructor(photographer) {
     this.photographer = photographer;
     this.detail = photographer.detail;
     this.media = photographer.media;
-
+    this.sortOptions = [
+      { value: "likes", label: "Popularité" },
+      { value: "date", label: "Date" },
+      { value: "title", label: "Titre" },
+    ];
     this.sort = "likes";
   }
 
@@ -19,6 +17,7 @@ class PhotographerView {
     let header = "";
 
     header += this.getPhotographerTextMetaHTML();
+    // eslint-disable-next-line quotes
     header += `<button class="contact-button">Contactez-moi</button>`;
     header += this.getPhotographerPicture();
 
@@ -40,9 +39,7 @@ class PhotographerView {
             />
           </button>
           <ul class="sort-list">
-            ${this.options.join(
-              `<span class="outer-divider"><span class="inner-divider"></span></span>`
-            )}
+            ${this.options.join("<span class=\"outer-divider\"><span class=\"inner-divider\"></span></span>")}
           </ul>
         </div>
       </div>
@@ -66,11 +63,11 @@ class PhotographerView {
       button.addEventListener("click", (e) => {
         e.preventDefault();
         this.sort = this.sortOptions.find(
-          (opt) => opt.label === e.target.textContent
+          (opt) => opt.label === e.target.textContent,
         ).value;
         this.closeSorter();
         const index = this.sortOptions.findIndex(
-          (opt) => opt.value === this.sort
+          (opt) => opt.value === this.sort,
         );
         const element = this.sortOptions.splice(index, 1);
         this.sortOptions.sort((a, b) => a.label.localeCompare(b.label));
@@ -92,9 +89,9 @@ class PhotographerView {
       button.addEventListener("click", (e) => {
         e.preventDefault();
         const id = e.target.getAttribute("data-index");
-        const medium = mediaList[parseInt(id)];
+        const medium = mediaList[parseInt(id, 10)];
         if (medium.isLiked === undefined) {
-          medium.likes++;
+          medium.likes += 1;
           medium.isLiked = true;
           this.render();
         }
@@ -103,17 +100,19 @@ class PhotographerView {
     /* #endregion */
 
     /* #region lightbox */
+    // eslint-disable-next-line no-undef
     const lightbox = new Lightbox();
     lightbox.init(mediaList, mediaPath);
     /* #endregion */
 
     /* #region contact */
+    // eslint-disable-next-line no-undef
     const contactForm = new ContactForm();
     contactForm.init(this.detail.id, this.detail.name);
     /* #endregion */
 
     /* #region stats */
-    let stats = document.querySelector(".photograph-stats");
+    const stats = document.querySelector(".photograph-stats");
     stats.innerHTML = `
       <div class="total-likes">
         ${this.media.reduce((acc, cur) => acc + cur.likes, 0)}
@@ -128,16 +127,18 @@ class PhotographerView {
   get options() {
     return this.sortOptions.map(
       (option) => `
-        <li><button class="sort-buttons">${option.label}${
-        option.value === this.sort
-          ? `<img
-              src="assets/icons/chevron-down-sharp-svgrepo-com.svg"
-              alt="toggle-down-icon"
-              class="sort-icon"
-            />`
-          : ""
-      }</button></li>
-      `
+        <li>
+          <button class="sort-buttons">
+            ${option.label}${option.value === this.sort ? `
+              <img
+                src="assets/icons/chevron-down-sharp-svgrepo-com.svg"
+                alt="toggle-down-icon"
+                class="sort-icon"
+              />
+              ` : ""}
+          </button>
+        </li>
+      `,
     );
   }
 
@@ -182,7 +183,7 @@ class PhotographerView {
     const sortedMedia = this.sortMedia(this.media);
     const mediaPath = `assets/photographers/${this.detail.name}/`;
 
-    let mediaList = sortedMedia.reduce((acc, medium, index) => {
+    const mediaList = sortedMedia.reduce((acc, medium, index) => {
       const md = medium.image
         ? `<img src="${mediaPath}${medium.image}" alt="${medium.title}" />`
         : `<video controls><source src="${mediaPath}${medium.video}" type="video/mp4"></video>`;
@@ -206,7 +207,7 @@ class PhotographerView {
     return {
       mediaHTML: `<div class="media-list">${mediaList}</div>`,
       mediaList: sortedMedia,
-      mediaPath: mediaPath,
+      mediaPath,
     };
   }
 }

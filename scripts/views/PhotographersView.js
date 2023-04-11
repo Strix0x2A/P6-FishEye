@@ -1,7 +1,9 @@
+/* global PhotographersView */
+// eslint-disable-next-line no-unused-vars
 class PhotographersView {
   render(photographers) {
     const photographersSection = document.querySelector(
-      ".photographer-section"
+      ".photographer-section",
     );
     let html = "";
 
@@ -11,6 +13,7 @@ class PhotographersView {
     photographersSection.innerHTML = html;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   getDetailPhotographerHTML(photographer) {
     const picture = `assets/photographers/Photographers ID Photos/${photographer.portrait}`;
 
@@ -24,6 +27,6 @@ class PhotographersView {
         <p class="pg-tagline">${photographer.tagline}</p>
         <p class="pg-price">${photographer.price}€/jour</p>
       </div>
-	`;
+    `;
   }
 }

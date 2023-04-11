@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 class Model {
   constructor() {
     this.data = null;
@@ -14,14 +15,14 @@ class Model {
   getPhotographerMedia(photographerId) {
     const mediaList = [];
     this.data.media.map((e) =>
-      e.photographerId === photographerId ? mediaList.push(e) : undefined
-    );
+      // eslint-disable-next-line implicit-arrow-linebreak
+      (e.photographerId === photographerId ? mediaList.push(e) : undefined));
     return mediaList;
   }
 
   getPhotographerDetail(photographerId) {
     const detail = this.data.photographers.find(
-      (photographer) => photographer.id === photographerId
+      (photographer) => photographer.id === photographerId,
     );
     return detail;
   }

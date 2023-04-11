@@ -1,4 +1,4 @@
-/* global Lightbox */
+// eslint-disable-next-line no-unused-vars
 class Lightbox {
   constructor() {
     this.lightbox = document.querySelector("#media-lightbox");
@@ -15,14 +15,10 @@ class Lightbox {
     this.mediaPath = mediaPath;
 
     const mediaTitles = document.querySelectorAll(".medium-title");
-    mediaTitles.forEach((medium, i) =>
-      medium.addEventListener("click", () => this.displayLightbox(i))
-    );
+    mediaTitles.forEach((medium, i) => medium.addEventListener("click", () => this.displayLightbox(i)));
 
     const mediaMedium = document.querySelectorAll(".md");
-    mediaMedium.forEach((medium, i) =>
-      medium.addEventListener("click", () => this.displayLightbox(i))
-    );
+    mediaMedium.forEach((medium, i) => medium.addEventListener("click", () => this.displayLightbox(i)));
 
     this.lightbox.addEventListener("keydown", this.handleKeyDown);
     this.lightbox.setAttribute("tabindex", "0");
@@ -31,14 +27,10 @@ class Lightbox {
     closeLightbox.addEventListener("click", () => this.closeLightbox());
 
     const prevButton = document.querySelector(".previous-medium-btn");
-    prevButton.addEventListener("click", () =>
-      this.renderImage({ action: "prev" })
-    );
+    prevButton.addEventListener("click", () => this.renderImage({ action: "prev" }));
 
     const nextButton = document.querySelector(".next-medium-btn");
-    nextButton.addEventListener("click", () =>
-      this.renderImage({ action: "next" })
-    );
+    nextButton.addEventListener("click", () => this.renderImage({ action: "next" }));
   }
 
   handleKeyDown(event) {
@@ -57,9 +49,7 @@ class Lightbox {
 
   renderImage({ action }) {
     const value = action === "next" ? 1 : -1;
-    this.currentIndex =
-      (this.currentIndex + value + this.mediaList.length) %
-      this.mediaList.length;
+    this.currentIndex = (this.currentIndex + value + this.mediaList.length) % this.mediaList.length;
     this.render();
   }
 

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 class ContactForm {
   constructor() {
     this.modal = document.querySelector("#contact-modal");
@@ -13,20 +14,20 @@ class ContactForm {
     this.form.innerHTML += this.generateFormElemHTML(
       "firstName",
       "Prénom",
-      "input"
+      "input",
     );
     this.form.innerHTML += this.generateFormElemHTML(
       "lastName",
       "Nom",
-      "input"
+      "input",
     );
     this.form.innerHTML += this.generateFormElemHTML("email", "Email", "input");
     this.form.innerHTML += this.generateFormElemHTML(
       "message",
       "Message",
-      "textarea"
+      "textarea",
     );
-    this.form.innerHTML += `<button class="contact-button">Envoyer</button>`;
+    this.form.innerHTML += "<button class=\"contact-button\">Envoyer</button>";
 
     const openContactFormButton = document.querySelector(".contact-button");
     openContactFormButton.addEventListener("click", () => this.displayModal());
@@ -35,12 +36,12 @@ class ContactForm {
     closeContactFormButton.addEventListener("click", () => this.closeModal());
 
     this.form.addEventListener("formdata", (e) => {
-      const formData = e.formData;
+      const { formData } = e;
       formData.append("photographerId", photographerId);
     });
 
     const submitContactFormButton = document.querySelector(
-      "#contact-modal .contact-button"
+      "#contact-modal .contact-button",
     );
     submitContactFormButton.addEventListener("click", (e) => {
       e.preventDefault();
@@ -60,6 +61,7 @@ class ContactForm {
   }
 
   /* Form Handler */
+  // eslint-disable-next-line class-methods-use-this
   generateFormElemHTML(id, label, type) {
     let entry = "";
 
@@ -70,17 +72,21 @@ class ContactForm {
       case "textarea":
         entry = `<textarea id="${id}" name="${id}" rows="5" required></textarea>`;
         break;
+      default:
+        break;
     }
 
     return `
-        <div class="form-group">
+      <div class="form-group">
         <label for="${id}">${label}</label>
         ${entry}
-        </div>
-        `;
+      </div>
+    `;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   submitContactForm(formData) {
+    // eslint-disable-next-line no-console
     console.log(Object.fromEntries(formData));
   }
 }
