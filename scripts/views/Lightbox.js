@@ -14,6 +14,7 @@ class Lightbox {
     this.mediaList = mediaList;
     this.mediaPath = mediaPath;
 
+    /* open and close lightbox handlers */
     const mediaTitles = document.querySelectorAll(".medium-title");
     mediaTitles.forEach((medium, i) => medium.addEventListener("click", () => this.displayLightbox(i)));
 
@@ -48,6 +49,7 @@ class Lightbox {
   }
 
   renderImage({ action }) {
+    /* handles previous and next buttons */
     const value = action === "next" ? 1 : -1;
     this.currentIndex = (this.currentIndex + value + this.mediaList.length) % this.mediaList.length;
     this.render();

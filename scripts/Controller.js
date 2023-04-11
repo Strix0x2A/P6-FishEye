@@ -25,8 +25,6 @@ class Controller {
 /*
 
 TODO :
-- button with dropdown
-- gestion des likes
 - accessibilité
 
 */

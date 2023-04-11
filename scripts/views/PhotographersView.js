@@ -1,4 +1,3 @@
-/* global PhotographersView */
 // eslint-disable-next-line no-unused-vars
 class PhotographersView {
   render(photographers) {

@@ -1,4 +1,5 @@
 // eslint-disable-next-line no-unused-vars
+/* global Lightbox, ContactForm */
 class PhotographerView {
   constructor(photographer) {
     this.photographer = photographer;
@@ -17,8 +18,7 @@ class PhotographerView {
     let header = "";
 
     header += this.getPhotographerTextMetaHTML();
-    // eslint-disable-next-line quotes
-    header += `<button class="contact-button">Contactez-moi</button>`;
+    header += "<button class=\"contact-button\">Contactez-moi</button>";
     header += this.getPhotographerPicture();
 
     photographHeader.innerHTML = header;
@@ -100,13 +100,11 @@ class PhotographerView {
     /* #endregion */
 
     /* #region lightbox */
-    // eslint-disable-next-line no-undef
     const lightbox = new Lightbox();
     lightbox.init(mediaList, mediaPath);
     /* #endregion */
 
     /* #region contact */
-    // eslint-disable-next-line no-undef
     const contactForm = new ContactForm();
     contactForm.init(this.detail.id, this.detail.name);
     /* #endregion */

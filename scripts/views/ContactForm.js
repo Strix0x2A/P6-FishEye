@@ -7,10 +7,12 @@ class ContactForm {
   }
 
   init(photographerId, photographerName) {
+    /* header */
     this.header.innerHTML = `
       <h2>Contactez-moi ${photographerName}</h2>
       <img class="close-modal-btn" src="assets/icons/close-white.svg" />
     `;
+    /* form elements */
     this.form.innerHTML += this.generateFormElemHTML(
       "firstName",
       "Prénom",
@@ -29,24 +31,27 @@ class ContactForm {
     );
     this.form.innerHTML += "<button class=\"contact-button\">Envoyer</button>";
 
+    /* modal handlers */
     const openContactFormButton = document.querySelector(".contact-button");
     openContactFormButton.addEventListener("click", () => this.displayModal());
 
     const closeContactFormButton = document.querySelector(".close-modal-btn");
     closeContactFormButton.addEventListener("click", () => this.closeModal());
 
+    /* extract data from form */
     this.form.addEventListener("formdata", (e) => {
       const { formData } = e;
       formData.append("photographerId", photographerId);
     });
 
+    /* submit */
     const submitContactFormButton = document.querySelector(
       "#contact-modal .contact-button",
     );
     submitContactFormButton.addEventListener("click", (e) => {
       e.preventDefault();
-      const formData = new FormData(this.form);
-      this.submitContactForm(formData);
+      this.formData = new FormData(this.form);
+      this.submitContactForm();
       this.closeModal();
     });
   }
@@ -84,9 +89,8 @@ class ContactForm {
     `;
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  submitContactForm(formData) {
+  submitContactForm() {
     // eslint-disable-next-line no-console
-    console.log(Object.fromEntries(formData));
+    console.log(Object.fromEntries(this.formData));
   }
 }
