@@ -21,10 +21,3 @@ class Controller {
     photographerView.render();
   }
 }
-
-/*
-
-TODO :
-- accessibilité
-
-*/

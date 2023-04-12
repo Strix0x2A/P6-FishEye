@@ -1,5 +1,5 @@
-// eslint-disable-next-line no-unused-vars
 /* global Lightbox, ContactForm */
+// eslint-disable-next-line no-unused-vars
 class PhotographerView {
   constructor(photographer) {
     this.photographer = photographer;
@@ -18,7 +18,7 @@ class PhotographerView {
     let header = "";
 
     header += this.getPhotographerTextMetaHTML();
-    header += "<button class=\"contact-button\">Contactez-moi</button>";
+    header += `<button class="contact-button" aria-label="Contacter ${this.photographer.name}">Contactez-moi</button>`;
     header += this.getPhotographerPicture();
 
     photographHeader.innerHTML = header;
@@ -126,7 +126,7 @@ class PhotographerView {
     return this.sortOptions.map(
       (option) => `
         <li>
-          <button class="sort-buttons">
+          <button class="sort-buttons" aria-label="Trier par ${option.label}">
             ${option.label}${option.value === this.sort ? `
               <img
                 src="assets/icons/chevron-down-sharp-svgrepo-com.svg"
@@ -187,7 +187,7 @@ class PhotographerView {
         : `<video controls><source src="${mediaPath}${medium.video}" type="video/mp4"></video>`;
       return `${acc}
         <div class="medium">
-          <div class="md">
+          <div class="md" aria-label="Voir ${medium.title}" tabindex="0">
             ${md}
           </div>
           <div class="medium-detail">

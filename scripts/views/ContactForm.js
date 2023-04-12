@@ -10,7 +10,7 @@ class ContactForm {
     /* header */
     this.header.innerHTML = `
       <h2>Contactez-moi ${photographerName}</h2>
-      <img class="close-modal-btn" src="assets/icons/close-white.svg" />
+      <img aria-label="Fermer formulaire de contact" class="close-modal-btn" src="assets/icons/close-white.svg" />
     `;
     /* form elements */
     this.form.innerHTML += this.generateFormElemHTML(
@@ -29,7 +29,7 @@ class ContactForm {
       "Message",
       "textarea",
     );
-    this.form.innerHTML += "<button class=\"contact-button\">Envoyer</button>";
+    this.form.innerHTML += "<button class=\"contact-button\" aria-label=\"Envoyer formulaire de contact\">Envoyer</button>";
 
     /* modal handlers */
     const openContactFormButton = document.querySelector(".contact-button");
@@ -72,10 +72,10 @@ class ContactForm {
 
     switch (type) {
       case "input":
-        entry = `<input type="text" id="${id}" name="${id}" required />`;
+        entry = `<input aria-label="Champ ${label}" type="text" id="${id}" name="${id}" required />`;
         break;
       case "textarea":
-        entry = `<textarea id="${id}" name="${id}" rows="5" required></textarea>`;
+        entry = `<textarea aria-label="Champ ${label}" id="${id}" name="${id}" rows="5" required></textarea>`;
         break;
       default:
         break;

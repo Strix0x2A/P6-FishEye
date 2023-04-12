@@ -18,7 +18,7 @@ class PhotographersView {
 
     return `
       <div class="pg">
-        <a href="photographer.html?photographerId=${photographer.id}">
+        <a aria-label="Photographer ${photographer.name}" href="photographer.html?photographerId=${photographer.id}">
           <img class="pg-img" src="${picture}" alt="${photographer.name}" />
           <h2 class="pg-name">${photographer.name}</h2>
         </a>

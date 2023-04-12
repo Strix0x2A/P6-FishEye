@@ -20,6 +20,7 @@ class Lightbox {
 
     const mediaMedium = document.querySelectorAll(".md");
     mediaMedium.forEach((medium, i) => medium.addEventListener("click", () => this.displayLightbox(i)));
+    mediaMedium.forEach((medium, i) => medium.addEventListener("keydown", (event) => this.handleKeyDown(event, i)));
 
     this.lightbox.addEventListener("keydown", this.handleKeyDown);
     this.lightbox.setAttribute("tabindex", "0");
@@ -34,17 +35,22 @@ class Lightbox {
     nextButton.addEventListener("click", () => this.renderImage({ action: "next" }));
   }
 
-  handleKeyDown(event) {
-    const leftArrowKey = 37;
-    const rightArrowKey = 39;
-    const escapeKey = 27;
-    event.preventDefault();
-    if (event.keyCode === leftArrowKey) {
+  handleKeyDown(event, i) {
+    const keys = {
+      leftArrow: 37,
+      rightArrow: 39,
+      escape: 27,
+      enter: 13,
+    };
+    if (Object.keys(keys).find((key) => keys[key] === event.keyCode)) event.preventDefault();
+    if (event.keyCode === keys.leftArrow) {
       this.renderImage({ action: "prev" });
-    } else if (event.keyCode === rightArrowKey) {
+    } else if (event.keyCode === keys.rightArrow) {
       this.renderImage({ action: "next" });
-    } else if (event.keyCode === escapeKey) {
+    } else if (event.keyCode === keys.escape) {
       this.closeLightbox();
+    } else if (event.keyCode === keys.enter) {
+      this.displayLightbox(i);
     }
   }
 
