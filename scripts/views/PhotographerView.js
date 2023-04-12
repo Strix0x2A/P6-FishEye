@@ -63,7 +63,7 @@ class PhotographerView {
       button.addEventListener("click", (e) => {
         e.preventDefault();
         this.sort = this.sortOptions.find(
-          (opt) => opt.label === e.target.textContent,
+          (opt) => opt.label === e.target.textContent.trim(),
         ).value;
         this.closeSorter();
         const index = this.sortOptions.findIndex(
